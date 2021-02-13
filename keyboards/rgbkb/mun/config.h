@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x3505
 #define MANUFACTURER    RGBKB
 #define PRODUCT         Mün
-#define DESCRIPTION     A split ortholinear keyboard
+
 #define USB_POLLING_INTERVAL_MS 1
 
 /* Matrix Configuration - Rows are doubled up */
