@@ -75,6 +75,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+#ifdef ENCODER_ENABLE
+const uint16_t PROGMEM encoders[][NUMBER_OF_ENCODERS][2]  = {
+    [_QWERTY] = ENCODER_LAYOUT( \
+        KC_VOLU, KC_VOLD,
+        KC_VOLU, KC_VOLD
+    ),
+    [_COLEMAK] = ENCODER_LAYOUT( \
+        _______, _______,
+        _______, _______
+    ),
+    [_DVORAK] = ENCODER_LAYOUT( \
+        _______, _______,
+        _______, _______
+    ),
+    [_FN] = ENCODER_LAYOUT( \
+        _______, _______,
+        _______, _______
+    ),
+    [_ADJUST] = ENCODER_LAYOUT( \
+        _______, _______,
+        _______, _______
+    )
+};
+
+void encoder_update_user(uint8_t index, bool clockwise) {
+    if (!is_keyboard_master()) return;
+    uint8_t layer = biton32(layer_state);
+    uint16_t keycode = pgm_read_word(&encoders[layer][index][clockwise]);
+    while (keycode == KC_TRANSPARENT && layer > 0)
+    {
+        layer--;
+        if ((layer_state & (1 << layer)) != 0)
+            keycode = pgm_read_word(&encoders[layer][index][clockwise]);
+    }
+    if (keycode != KC_TRANSPARENT)
+        tap_code16(keycode);
+}
+#endif // ENCODER_ENABLE
+
 #if defined(RGB_MATRIX_ENABLE) || defined(RGBLIGHT_ENABLE)
 typedef void (*rgb_f)(void);
 const rgb_f rgb_functions[TOUCH_SEGMENTS] = { rgblight_step, rgblight_toggle, rgblight_step_reverse };

@@ -24,4 +24,17 @@
     { R36, R35, R34, R33, R32, R31, R30 }, \
     { R46, R45, R44, R43, R42, R41, R40 }  \
 }
+
+#ifdef ENCODER_ENABLE
+#define NUMBER_OF_ENCODERS 2
+
+#define ENCODER_LAYOUT( \
+    E10, E11, \
+    E20, E21 \
+) \
+{ \
+    { E10, E11 }, \
+    { E20, E21 } \
+}
+#endif //ENCODER_ENABLE
 // clang-format on

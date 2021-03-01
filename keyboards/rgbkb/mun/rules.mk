@@ -29,7 +29,7 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 
 OLED_DRIVER_ENABLE = yes    # Enable the OLED Driver
 
-ENCODER_ENABLE = no
+ENCODER_ENABLE = yes
 
 SPLIT_KEYBOARD = yes
 SERIAL_DRIVER = usart
