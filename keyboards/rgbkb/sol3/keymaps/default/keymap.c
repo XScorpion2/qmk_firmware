@@ -17,9 +17,10 @@ enum mun_keycodes {
     GAME
 };
 
-#define FN      MO(_FN)
-#define ADJUST  MO(_ADJUST)
-
+#define FN       MO(_FN)
+#define ADJUST   MO(_ADJUST)
+#define COLEMAK  DF(_COLEMAK)
+#define GAME     DF(_GAME)
 #define FN_CAPS  LT(_FN, KC_CAPS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
